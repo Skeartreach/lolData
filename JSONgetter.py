@@ -12,7 +12,7 @@ class JSONgetter:
         self.SUMMONER_NAME = ""
         self.API_FULL_URL = ""
 
-    def getPlayer(self, playerName):
+    def getPlayerData(self, playerName):
         self.SUMMONER_NAME = playerName
         self.API_URL_SUMMONER = "https://euw1.api.riotgames.com/lol/summoner/v3/summoners/by-name/"
         self.API_FULL_URL = self.API_URL_SUMMONER + self.SUMMONER_NAME + self.AUTH_URL
