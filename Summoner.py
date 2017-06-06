@@ -1,3 +1,4 @@
+import datetime
 from JSONgetter import JSONgetter
 from Champion import Champion
 from Match import Match
@@ -18,7 +19,18 @@ class Summoner:
     def getLastChampPlayed(self):
         return Champion(Match(self.summonerID).getById()['matches'][0]['champion'])
 
+    def getLastMatch(self):
+        return Match(self.summonerID).getById()['matches']
 
-#s = Summoner("Futit")
-#print(s.getRecentMatches()['matches'][0]['timestamp'])
-#print(s.getLastChampPlayed().name)
+    def getLastMatchTime(self):
+        timestampnontreated = str(s.getLastMatch()[0]['timestamp'])
+        timestamp = ""
+        for x in range(0, 10):
+            timestamp += timestampnontreated[x]
+        return datetime.datetime.fromtimestamp(int(timestamp)).strftime('%d-%m-%Y %H:%M:%S')
+
+
+s = Summoner("Futit")
+
+print(s.getLastChampPlayed().name)
+print(s.getLastMatchTime())
